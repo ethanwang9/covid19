@@ -1,0 +1,14 @@
+// 命名空间
+@forward "element-plus/theme-chalk/src/mixins/config.scss" with (
+  $namespace: "ep"
+);
+
+// 主题样式覆盖
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    'primary': (),
+  ),
+);
+
+// 导入自定义黑暗模式样式
+@use "dark";

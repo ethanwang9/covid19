@@ -1,24 +1,24 @@
 <template>
   <el-row class="main">
-    <el-col class="main-left" :span="7">
+    <el-col :span="7" class="main-left">
       <div class="main-left-line">
         <dv-decoration3/>
       </div>
       <div class="main-left-btn">
-        <el-button size="large" class="main-left-btn-item" text  @click="changeArea">切换区域</el-button>
-        <el-button size="large" class="main-left-btn-item" text  @click="fullScreen">
+        <el-button class="main-left-btn-item" size="large" text @click="changeArea">切换区域</el-button>
+        <el-button class="main-left-btn-item" size="large" text @click="fullScreen">
           {{ isFull ? "退出全屏" : "全屏" }}
         </el-button>
-        <el-button size="large" class="main-left-btn-item" text  @click="showMenu">
+        <el-button class="main-left-btn-item" size="large" text @click="showMenu">
           {{ isShowMenu ? "隐藏菜单" : "显示菜单" }}
         </el-button>
       </div>
     </el-col>
-    <el-col class="main-title" :span="10">
+    <el-col :span="10" class="main-title">
       <h2 class="main-title-text">COVID19 大数据可视化系统</h2>
       <dv-decoration5 :dur="5" class="main-title-line"/>
     </el-col>
-    <el-col class="main-right" :span="7">
+    <el-col :span="7" class="main-right">
       <dv-decoration3/>
       <div class="main-right-item">
         <p>归属地: {{ location }}</p>
@@ -28,12 +28,11 @@
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import screenFull from 'screenfull';
 import useStore from "../../../store";
 import {dateTime} from '../../../utils/tool'
 import {ref} from "vue";
-import {UserLocation} from "../../../api/panel";
 
 // store
 const store = useStore().admin

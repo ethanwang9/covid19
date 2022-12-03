@@ -237,8 +237,8 @@ export interface QueryDangerReq {
 
 // 查询风险地区 - 返回
 export interface QueryDangerRes {
-    info:        QueryDangerResInfo,
-    level:       string
+    info: QueryDangerResInfo,
+    level: string
     update_time: string
 }
 

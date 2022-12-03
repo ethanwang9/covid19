@@ -15,7 +15,7 @@
         </el-col>
         <!--按钮-->
         <el-col class="content1-btn">
-          <el-button class="content1-btn-go" size="large" color="#ffffff" @click="gotoPage('/login')">
+          <el-button class="content1-btn-go" color="#ffffff" size="large" @click="gotoPage('/login')">
             <span>立刻体验</span>
             <i-ep-right></i-ep-right>
           </el-button>
@@ -39,11 +39,11 @@
         </el-col>
         <!--图表-->
         <el-col class="content2-chars">
-          <el-col class="content2-chars-item1" :xs="24" :sm="18" :md="10">
-            <img src="@/assets/images/index/index/e-chars-1.png" alt="echars1">
+          <el-col :md="10" :sm="18" :xs="24" class="content2-chars-item1">
+            <img alt="echars1" src="@/assets/images/index/index/e-chars-1.png">
           </el-col>
-          <el-col class="content2-chars-item2" :xs="24" :sm="18" :md="10">
-            <img src="@/assets/images/index/index/e-chars-2.png" alt="echars2">
+          <el-col :md="10" :sm="18" :xs="24" class="content2-chars-item2">
+            <img alt="echars2" src="@/assets/images/index/index/e-chars-2.png">
           </el-col>
         </el-col>
       </el-row>
@@ -56,23 +56,23 @@
         </el-col>
         <!--图表-->
         <el-row class="content3-box">
-          <el-col class="content3-box-item1" :sm="24" :md="14">
+          <el-col :md="14" :sm="24" class="content3-box-item1">
             <h2>确诊信息</h2>
             <p>根据用户归属地展示当前区域确诊等相关信息，使用图标、趋势线等表现手法让用户了解当前区域疫情情况</p>
           </el-col>
-          <el-col class="content3-box-item2" :sm="24" :md="9">
+          <el-col :md="9" :sm="24" class="content3-box-item2">
             <h2>热点动态</h2>
             <p>根据用户归属地展示用户所在地区疫情动态信息</p>
           </el-col>
-          <el-col class="content3-box-item3" :sm="24" :md="9">
+          <el-col :md="9" :sm="24" class="content3-box-item3">
             <h2>出行政策</h2>
             <p>根据用户出发地和目的地查询疫情防控出行条例，展示相关工作人员联系信息</p>
           </el-col>
-          <el-col class="content3-box-item4" :sm="24" :md="9">
+          <el-col :md="9" :sm="24" class="content3-box-item4">
             <h2>风险地区</h2>
             <p>根据国家卫健委全国风险地区数据，展示用户归属地风险地区相关信息</p>
           </el-col>
-          <el-col class="content3-box-item5" :sm="24" :md="5">
+          <el-col :md="5" :sm="24" class="content3-box-item5">
             <h2>未来</h2>
             <p>疫情已结束，人人摘下了口罩，出行交通已不再限制...</p>
           </el-col>
@@ -84,7 +84,7 @@
         <el-col class="content4-text">
           <h1>开启数据可视化</h1>
           <p>让图表量化数据，让信息传播更高效</p>
-          <el-button class="content4-btn" size="large" color="#ea0000" @click="gotoPage('/login')">
+          <el-button class="content4-btn" color="#ea0000" size="large" @click="gotoPage('/login')">
             <span>立刻体验</span>
             <i-ep-right></i-ep-right>
           </el-button>
@@ -104,7 +104,7 @@
   </el-backtop>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import Menu from '@/components/index/Menu.vue'
 import Footer from '@/components/index/Footer.vue'
 import {useRouter} from "vue-router";

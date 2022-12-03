@@ -21,6 +21,6 @@ export interface PublicInfoRes {
 // 获取微信公众号信息
 export const PublicInfo = (): PromiseRes<PublicInfoRes> => request({
     method: "get",
-    params:{},
+    params: {},
     url: "/public/info",
 })

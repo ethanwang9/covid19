@@ -1,4 +1,4 @@
-import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw} from "vue-router";
+import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 import useStore from "../store/index";
 
 const routes: RouteRecordRaw[] = [
@@ -167,14 +167,14 @@ router.beforeEach((to, from, next) => {
 
     // 登录拦截
     const store = useStore().app
-    if(to.meta.auth) {
-        if(store.isLogin()) {
+    if (to.meta.auth) {
+        if (store.isLogin()) {
             next()
-        }else{
-            next({name:"login"})
+        } else {
+            next({name: "login"})
         }
-    }else {
-        if(to.path === "/login" && store.isLogin()) {
+    } else {
+        if (to.path === "/login" && store.isLogin()) {
             next({name: "admin"})
         }
     }

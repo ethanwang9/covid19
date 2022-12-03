@@ -5,14 +5,14 @@
         <p>累计</p>
         <dv-decoration1 class="CUMMain-title-line"/>
       </div>
-      <div class="CUMMain-echarts" ref="cEcharts"></div>
+      <div ref="cEcharts" class="CUMMain-echarts"></div>
     </dv-border-box12>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import * as echarts from 'echarts'
-import {EChartOption} from "echarts";
+import {EChartOption} from 'echarts'
 import roma from '../../../../assets/theme/echarts.json'
 import useStore from "../../../../store";
 import {HistoryCurrConf} from "../../../../api/panel";
@@ -120,7 +120,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .CUMMain {
   width: 450px;
   height: 308px;

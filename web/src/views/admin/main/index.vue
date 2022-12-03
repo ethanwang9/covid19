@@ -1,5 +1,5 @@
 <template>
-  <v-scale-screen width="1920" height="1080" :wrapperStyle="contentStyle">
+  <v-scale-screen :wrapperStyle="contentStyle" height="1080" width="1920">
     <el-row>
       <!--      菜单-->
       <el-col :span="24">

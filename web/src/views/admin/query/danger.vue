@@ -1,5 +1,5 @@
 <template>
-  <el-row class="main" justify="center" :gutter="15">
+  <el-row :gutter="15" class="main" justify="center">
     <el-col>
       <h3>风险地区</h3>
       <el-col class="tips">
@@ -12,34 +12,37 @@
       <el-tabs
           v-model="activeTabs"
           class="main-tabs"
-          @tab-click="tabsClick"
           tab-position="top"
+          @tab-click="tabsClick"
       >
         <el-tab-pane class="main-tabs-pane" label="归属地风险地区" name="location">
           <!--START-->
           <h2>重庆</h2>
 
-          <h3 class="hei" v-if="dangerAreaList.h_count !== 0">高风险 x{{ dangerAreaList.h_count }}</h3>
-          <el-card class="main-tabs-pane-hei" shadow="always" v-for="(item,index) in dangerAreaList.h_list" :key="index"
-                   v-if="dangerAreaList.h_count !== 0">
+          <h3 v-if="dangerAreaList.h_count !== 0" class="hei">高风险 x{{ dangerAreaList.h_count }}</h3>
+          <el-card v-for="(item,index) in dangerAreaList.h_list" v-if="dangerAreaList.h_count !== 0" :key="index"
+                   class="main-tabs-pane-hei"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
             <p v-for="(item2,index2) in item.communitys" :key="index2">{{ item2 }}</p>
           </el-card>
 
-          <h3 class="mid" v-if="dangerAreaList.m_count !== 0">中风险 x{{}}</h3>
-          <el-card class="main-tabs-pane-mid" shadow="always" v-for="(item,index) in dangerAreaList.m_list" :key="index"
-                   v-if="dangerAreaList.m_count !== 0">
+          <h3 v-if="dangerAreaList.m_count !== 0" class="mid">中风险 x{{}}</h3>
+          <el-card v-for="(item,index) in dangerAreaList.m_list" v-if="dangerAreaList.m_count !== 0" :key="index"
+                   class="main-tabs-pane-mid"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
             <p v-for="(item2,index2) in item.communitys" :key="index2">{{ item2 }}</p>
           </el-card>
 
-          <h3 class="low" v-if="dangerAreaList.l_count !== 0">低风险 x{{ dangerAreaList.l_count }}</h3>
-          <el-card class="main-tabs-pane-low" shadow="always" v-for="(item,index) in dangerAreaList.l_list" :key="index"
-                   v-if="dangerAreaList.l_count !== 0">
+          <h3 v-if="dangerAreaList.l_count !== 0" class="low">低风险 x{{ dangerAreaList.l_count }}</h3>
+          <el-card v-for="(item,index) in dangerAreaList.l_list" v-if="dangerAreaList.l_count !== 0" :key="index"
+                   class="main-tabs-pane-low"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
@@ -53,12 +56,12 @@
             <span class="hidden-xs-only">当前地区： </span>
             <el-cascader
                 :options="cityData.list"
+                :show-all-levels="false"
+                clearable
+                filterable
                 placeholder="请选择查询地区"
                 separator=" - "
-                filterable
-                clearable
                 @change="changeCity"
-                :show-all-levels="false"
             />
           </el-col>
           <el-col v-if="cityData.res.level.length === 0">
@@ -80,7 +83,7 @@
               <template #extra>
                 <el-col v-if="cityData.res.level !== '常态化防控区域'">
                   <el-card class="main-tabs-pane-hei" shadow="always">
-                    <el-row :span="24" align="middle" v-for="(item,index) in cityData.res.info.communitys" :key="index">
+                    <el-row v-for="(item,index) in cityData.res.info.communitys" :key="index" :span="24" align="middle">
                       <el-col :md="18"><p>{{ item.info }}</p></el-col>
                       <el-col :md="6" class="hidden-sm-and-down">{{ item.level }}</el-col>
                     </el-row>
@@ -97,27 +100,30 @@
         </el-tab-pane>
         <el-tab-pane class="main-tabs-pane" label="全国风险地区" name="country">
           <!--START-->
-          <h3 class="hei" v-if="cityData.all.hcount !== 0">高风险 x{{cityData.all.hcount}}</h3>
-          <el-card class="main-tabs-pane-hei" shadow="always" v-for="(item,index) in cityData.all.highlist" :key="index"
-                   v-if="cityData.all.hcount !== 0">
+          <h3 v-if="cityData.all.hcount !== 0" class="hei">高风险 x{{ cityData.all.hcount }}</h3>
+          <el-card v-for="(item,index) in cityData.all.highlist" v-if="cityData.all.hcount !== 0" :key="index"
+                   class="main-tabs-pane-hei"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
             <p v-for="(item2,index2) in item.communitys" :key="index2">{{ item2 }}</p>
           </el-card>
 
-          <h3 class="mid" v-if="cityData.all.mcount !== 0">中风险 x{{ cityData.all.mcount }}</h3>
-          <el-card class="main-tabs-pane-mid" shadow="always" v-for="(item,index) in cityData.all.middlelist" :key="index"
-                   v-if="cityData.all.mcount !== 0">
+          <h3 v-if="cityData.all.mcount !== 0" class="mid">中风险 x{{ cityData.all.mcount }}</h3>
+          <el-card v-for="(item,index) in cityData.all.middlelist" v-if="cityData.all.mcount !== 0" :key="index"
+                   class="main-tabs-pane-mid"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
             <p v-for="(item2,index2) in item.communitys" :key="index2">{{ item2 }}</p>
           </el-card>
 
-          <h3 class="low" v-if="cityData.all.lcount !== 0">低风险 x{{ cityData.all.lcount }}</h3>
-          <el-card class="main-tabs-pane-low" shadow="always" v-for="(item,index) in cityData.all.lowlist" :key="index"
-                   v-if="cityData.all.lcount !== 0">
+          <h3 v-if="cityData.all.lcount !== 0" class="low">低风险 x{{ cityData.all.lcount }}</h3>
+          <el-card v-for="(item,index) in cityData.all.lowlist" v-if="cityData.all.lcount !== 0" :key="index"
+                   class="main-tabs-pane-low"
+                   shadow="always">
             <template #header>
               <span style="font-weight: bold">{{ item.area_name }}</span>
             </template>
@@ -130,12 +136,14 @@
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 // tabs 激活
 import {
-  ChinaCityList, DAList,
+  ChinaCityList,
   DangerAreaLocation,
-  DangerAreaLocationRes, QueryDanger, QueryDangerAll,
+  DangerAreaLocationRes,
+  QueryDanger,
+  QueryDangerAll,
   QueryDangerReq,
 } from "../../../api/query";
 
@@ -258,10 +266,10 @@ const QueryDangerInfo = async () => {
 
 // 获取全国风险地区
 const GetDangerAll = async () => {
-  await QueryDangerAll().then(res=>{
+  await QueryDangerAll().then(res => {
     cityData.all = res.data
     updateTime.value = res.data.end_update_time
-  }).catch(err=>{
+  }).catch(err => {
     ElNotification({
       title: "请求发送错误",
       message: err.message,

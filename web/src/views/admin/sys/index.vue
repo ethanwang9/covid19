@@ -1,15 +1,15 @@
 <template>
-  <el-row justify="center" :gutter="15">
-    <el-col :md="18" :lg="14" class="main" v-if="isAdmin">
+  <el-row :gutter="15" justify="center">
+    <el-col v-if="isAdmin" :lg="14" :md="18" class="main">
       <el-col>
         <h3>系统设置</h3>
       </el-col>
       <el-col>
         <el-form
-            label-width="120px"
-            :rules="rules"
-            :model="data"
             ref="form"
+            :model="data"
+            :rules="rules"
+            label-width="120px"
         >
           <el-form-item label="版权主体" prop="copyright">
             <el-input v-model.trim="data.copyright"/>
@@ -27,7 +27,7 @@
             <el-input v-model.trim="data.mp_url"/>
           </el-form-item>
           <el-form-item label="公众号图片" prop="mp_img">
-            <el-input placeholder="请填写远程图片地址" v-model.trim="data.mp_img"/>
+            <el-input v-model.trim="data.mp_img" placeholder="请填写远程图片地址"/>
           </el-form-item>
           <el-form-item label="联系邮箱" prop="mail">
             <el-input v-model.trim="data.mail" type="email"/>
@@ -39,13 +39,13 @@
         </el-form>
       </el-col>
     </el-col>
-    <el-col :sm="8" class="error" v-else>
+    <el-col v-else :sm="8" class="error">
       <Auth></Auth>
     </el-col>
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 // 公众号表单
 import {FormInstance, FormRules} from "element-plus";
 import {SysInfo, SysInfoRes, SysInfoSet} from "../../../api/sys";

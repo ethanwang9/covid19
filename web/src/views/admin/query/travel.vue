@@ -1,5 +1,5 @@
 <template>
-  <el-row class="main" justify="center" :gutter="15">
+  <el-row :gutter="15" class="main" justify="center">
     <el-col>
       <h3>出行政策</h3>
       <el-col class="tips">
@@ -9,28 +9,28 @@
     <el-col class="main-select">
       <el-cascader
           :options="areaList"
-          placeholder="出发地"
-          filterable
           clearable
+          filterable
+          placeholder="出发地"
           @change="changeArea($event, 'from')"
       />
       <i-ep-Switch/>
       <el-cascader
           :options="areaList"
-          placeholder="目的地"
-          filterable
           clearable
+          filterable
+          placeholder="目的地"
           @change="changeArea($event, 'to')"
       />
     </el-col>
-    <el-col class="main-content" :span="24" v-show="travelData.to.cityName.length !== 0">
+    <el-col v-show="travelData.to.cityName.length !== 0" :span="24" class="main-content">
       <el-row justify="center" style="margin-bottom: 20px">
-        <el-col :xs="20" :sm="16" :md="14">
+        <el-col :md="14" :sm="16" :xs="20">
           <el-alert
               :title="travelData.importantNotice"
-              type="success"
               closable
               show-icon
+              type="success"
           />
         </el-col>
       </el-row>
@@ -41,7 +41,7 @@
           <span v-if="travelData.from.isInUpdate">进入政策有更新</span>
         </el-col>
         <el-col class="main-content-item-tag">
-          <el-tag type="danger" effect="dark" v-for="(item,index) in travelData.from.labels" :key="index">{{
+          <el-tag v-for="(item,index) in travelData.from.labels" :key="index" effect="dark" type="danger">{{
               item.label
             }}
           </el-tag>
@@ -52,13 +52,13 @@
         <el-col class="main-content-item-phone">
           <h3>防疫热线</h3>
           <!--防疫热线 START-->
-          <el-col class="main-content-item-phone-btns"
-                  v-for="(item, index) in travelData.from.diseaseControlTel.diseaseControlTel"
+          <el-col v-for="(item, index) in travelData.from.diseaseControlTel.diseaseControlTel"
                   :key="index"
+                  class="main-content-item-phone-btns"
           >
             <p>{{ item.name }}</p>
-            <el-button size="large" text bg auto-insert-space>
-              <a :href="'tel:'+item2" v-for="(item2, index2) in item.title" :key="index2">{{ item2 }}</a>
+            <el-button auto-insert-space bg size="large" text>
+              <a v-for="(item2, index2) in item.title" :key="index2" :href="'tel:'+item2">{{ item2 }}</a>
             </el-button>
           </el-col>
           <!--防疫热线 END-->
@@ -71,7 +71,7 @@
           <span v-if="travelData.to.isInUpdate">进入政策有更新</span>
         </el-col>
         <el-col class="main-content-item-tag">
-          <el-tag type="danger" effect="dark" v-for="(item,index) in travelData.to.labels" :key="index">{{
+          <el-tag v-for="(item,index) in travelData.to.labels" :key="index" effect="dark" type="danger">{{
               item.label
             }}
           </el-tag>
@@ -82,13 +82,13 @@
         <el-col class="main-content-item-phone">
           <h3>防疫热线</h3>
           <!--防疫热线 START-->
-          <el-col class="main-content-item-phone-btns"
-                  v-for="(item, index) in travelData.to.diseaseControlTel.diseaseControlTel"
+          <el-col v-for="(item, index) in travelData.to.diseaseControlTel.diseaseControlTel"
                   :key="index"
+                  class="main-content-item-phone-btns"
           >
             <p>{{ item.name }}</p>
-            <el-button size="large" text bg auto-insert-space>
-              <a :href="'tel:'+item2" v-for="(item2, index2) in item.title" :key="index2">{{ item2 }}</a>
+            <el-button auto-insert-space bg size="large" text>
+              <a v-for="(item2, index2) in item.title" :key="index2" :href="'tel:'+item2">{{ item2 }}</a>
             </el-button>
           </el-col>
           <!--防疫热线 END-->
@@ -96,12 +96,12 @@
       </el-col>
     </el-col>
     <el-col v-show="travelData.to.cityName.length === 0">
-      <el-empty description="还没有内容,快去选择地区查询出行政策吧！" />
+      <el-empty description="还没有内容,快去选择地区查询出行政策吧！"/>
     </el-col>
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {CityList, Travel, TravelRes} from "../../../api/query";
 
 // 接口结构

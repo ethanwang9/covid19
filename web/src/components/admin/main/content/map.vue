@@ -6,9 +6,9 @@
 
 <script lang="ts" setup>
 import * as echarts from 'echarts'
+import {EChartOption} from 'echarts'
 import useStore from "../../../../store";
 import {GeoMap, GeoMapData} from "../../../../api/panel";
-import {EChartOption, number} from "echarts";
 
 // store
 const store = useStore().app
@@ -98,7 +98,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .MMain, #MMap {
   width: 900px;
   height: 570px;

@@ -1,19 +1,19 @@
 <template>
-  <el-row :class="isAdmin?'main':''" justify="center" :gutter="15">
+  <el-row :class="isAdmin?'main':''" :gutter="15" justify="center">
     <template v-if="isAdmin">
       <el-col>
         <h3>用户管理</h3>
       </el-col>
       <el-col>
-        <el-form :inline="true" class="form" :model="form" :rules="rules" ref="formRef">
+        <el-form ref="formRef" :inline="true" :model="form" :rules="rules" class="form">
           <el-form-item label="UID" prop="uid">
-            <el-input placeholder="请输入用户UID" v-model.trim="form.uid" clearable/>
+            <el-input v-model.trim="form.uid" clearable placeholder="请输入用户UID"/>
           </el-form-item>
           <el-form-item label="昵称" prop="nickname">
-            <el-input placeholder="请输入用户昵称" v-model.trim="form.nickname" clearable/>
+            <el-input v-model.trim="form.nickname" clearable placeholder="请输入用户昵称"/>
           </el-form-item>
           <el-form-item label="权限" prop="level">
-            <el-select placeholder="请选择用户权限" v-model="form.level" clearable>
+            <el-select v-model="form.level" clearable placeholder="请选择用户权限">
               <el-option label="用户" value="user"/>
               <el-option label="管理员" value="admin"/>
               <el-option label="禁用" value="stop"/>
@@ -27,27 +27,27 @@
       <el-col>
         <el-table
             :data="data.list"
-            style="width: 100%;padding: 0 30px"
             :highlight-current-row="true"
             empty-text="没有数据"
+            style="width: 100%;padding: 0 30px"
         >
-          <el-table-column sortable fixed label="用户UID" prop="uid"/>
+          <el-table-column fixed label="用户UID" prop="uid" sortable/>
           <el-table-column label="昵称" prop="nickname"/>
           <el-table-column label="头像" prop="avatar">
             <template #default="scope">
-              <el-avatar :src="scope.row.avatar" :size="50" shape="square" fit="cover" alt="用户头像"></el-avatar>
+              <el-avatar :size="50" :src="scope.row.avatar" alt="用户头像" fit="cover" shape="square"></el-avatar>
             </template>
           </el-table-column>
-          <el-table-column sortable label="权限" prop="level">
+          <el-table-column label="权限" prop="level" sortable>
             <template #default="scope">
-              <el-tag type="info" effect="dark" v-if="scope.row.level === 'admin'">管理员</el-tag>
-              <el-tag effect="dark" v-else-if="scope.row.level === 'user'">用户</el-tag>
-              <el-tag type="danger" effect="dark" v-else-if="scope.row.level === 'stop'">禁用</el-tag>
+              <el-tag v-if="scope.row.level === 'admin'" effect="dark" type="info">管理员</el-tag>
+              <el-tag v-else-if="scope.row.level === 'user'" effect="dark">用户</el-tag>
+              <el-tag v-else-if="scope.row.level === 'stop'" effect="dark" type="danger">禁用</el-tag>
             </template>
           </el-table-column>
-          <el-table-column sortable label="归属地" prop="location"/>
-          <el-table-column sortable label="创建时间" prop="create_at"/>
-          <el-table-column sortable label="更新时间" prop="updated_at"/>
+          <el-table-column label="归属地" prop="location" sortable/>
+          <el-table-column label="创建时间" prop="create_at" sortable/>
+          <el-table-column label="更新时间" prop="updated_at" sortable/>
           <el-table-column fixed="right" label="操作" width="80">
             <template #default="scope">
               <el-button size="small" @click="openSide(scope.row.uid)">编辑</el-button>
@@ -57,18 +57,18 @@
       </el-col>
       <el-col class="pagination">
         <el-pagination
-            background
+            :current-page="pagination.current"
             :hide-on-single-page="true"
             :page-size="pagination.limit"
-            :total="data.total"
             :pager-count="4"
-            :current-page="pagination.current"
+            :total="data.total"
+            background
             layout="prev, pager, next"
             @current-change="currentChange"
         />
       </el-col>
     </template>
-    <el-col :sm="8" class="error" v-else>
+    <el-col v-else :sm="8" class="error">
       <Auth></Auth>
     </el-col>
   </el-row>
@@ -76,8 +76,8 @@
   <!--  侧边栏内容-->
   <el-drawer
       v-model="isOpenSide"
-      title="编辑用户信息"
       size="40%"
+      title="编辑用户信息"
   >
     <el-row :gutter="15">
       <el-col class="side">
@@ -86,16 +86,16 @@
       </el-col>
       <el-col style="text-align: center;padding-top: 30px;padding-bottom: 100px;">
         <el-select v-model="sideData.level" @change="changeUserLevel">
-          <el-option label="管理员" value="admin" v-show="sideData.level!=='admin'"/>
-          <el-option label="用户" value="user" v-show="sideData.level!=='user'"/>
-          <el-option label="禁用" value="stop" v-show="sideData.level!=='stop'"/>
+          <el-option v-show="sideData.level!=='admin'" label="管理员" value="admin"/>
+          <el-option v-show="sideData.level!=='user'" label="用户" value="user"/>
+          <el-option v-show="sideData.level!=='stop'" label="禁用" value="stop"/>
         </el-select>
       </el-col>
     </el-row>
   </el-drawer>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import Auth from "@/components/status/auth.vue"
 import {UpdateUserLevel, UserList, UserListRes, UserQuery, UserQueryReq} from "../../../api/user"
 import {FormInstance} from "element-plus";

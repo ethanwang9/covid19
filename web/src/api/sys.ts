@@ -14,7 +14,7 @@ export interface SysMpInfoRes {
 // 获取微信公众号信息
 export const SysMpInfo = (): PromiseRes<SysMpInfoRes> => request({
     method: "get",
-    params:{},
+    params: {},
     url: "/sys/mp",
 })
 
@@ -49,7 +49,7 @@ export interface SysInfoRes {
 // 获取系统信息
 export const SysInfo = (): PromiseRes<SysInfoRes> => request({
     method: "get",
-    params:{},
+    params: {},
     url: "/sys/info",
 })
 

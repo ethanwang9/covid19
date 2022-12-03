@@ -26,8 +26,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import {DAList, DangerAreaLocation} from "../../../../api/query";
+<script lang="ts" setup>
 import {DangerArea} from "../../../../api/panel";
 import useStore from "../../../../store";
 
@@ -94,7 +93,7 @@ const GetUserDangerLocation = async () => {
 GetUserDangerLocation()
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .DENMain {
   width: 450px;
   height: 570px;

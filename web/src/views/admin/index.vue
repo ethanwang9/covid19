@@ -1,14 +1,14 @@
 <template>
   <el-container>
     <!--    菜单-->
-    <el-header class="header" height="60px" v-show="isShowHeader">
-      <el-row justify="center" align="middle" style="height: 100%">
-        <el-col class="header-logo hidden-sm-and-down" :md="8">
+    <el-header v-show="isShowHeader" class="header" height="60px">
+      <el-row align="middle" justify="center" style="height: 100%">
+        <el-col :md="8" class="header-logo hidden-sm-and-down">
           <h3>COVID-19 大数据可视化系统</h3>
         </el-col>
-        <el-col class="header-bar" :md="15">
-          <el-row justify="center" align="middle">
-            <el-col class="header-bar-menu" :sm="18" :xs="14">
+        <el-col :md="15" class="header-bar">
+          <el-row align="middle" justify="center">
+            <el-col :sm="18" :xs="14" class="header-bar-menu">
               <el-menu
                   :default-active="menuActive"
                   mode="horizontal"
@@ -32,12 +32,12 @@
                 </el-sub-menu>
               </el-menu>
             </el-col>
-            <el-col class="header-bar-user" :sm="6" :xs="10">
+            <el-col :sm="6" :xs="10" class="header-bar-user">
               <el-dropdown>
                 <span class="el-dropdown-link header-bar-user-box">
                   <el-avatar
-                      class="hidden-xs-only"
                       :src="userInfo.avatar"
+                      class="hidden-xs-only"
                   />
                   <p>{{ userInfo.nickname }}</p>
                   <i-ep-arrow-down></i-ep-arrow-down>
@@ -55,7 +55,7 @@
       </el-row>
     </el-header>
     <!--    内容-->
-    <el-main class="content" :style="adminMainCustom">
+    <el-main :style="adminMainCustom" class="content">
       <router-view></router-view>
     </el-main>
   </el-container>
@@ -66,7 +66,7 @@
   </el-backtop>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useRoute, useRouter} from "vue-router";
 import useStore from "../../store";
 import {storeToRefs} from "pinia";

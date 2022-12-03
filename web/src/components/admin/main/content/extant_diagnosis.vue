@@ -5,14 +5,14 @@
         <p>现存确诊</p>
         <dv-decoration1 class="EDMain-title-line"/>
       </div>
-      <div class="EDMain-echarts" ref="cEcharts"></div>
+      <div ref="cEcharts" class="EDMain-echarts"></div>
     </dv-border-box12>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import * as echarts from 'echarts'
-import {EChartOption} from "echarts";
+import {EChartOption} from 'echarts'
 import roma from '../../../../assets/theme/echarts.json'
 import {HistoryCurrConf} from "../../../../api/panel";
 import useStore from "../../../../store";
@@ -101,7 +101,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .EDMain {
   width: 450px;
   height: 308px;

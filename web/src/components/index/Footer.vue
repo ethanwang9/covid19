@@ -1,40 +1,40 @@
 <template>
   <el-row class="copyright">
     <!--        社交媒体-->
-    <el-col class="copyright-icons" :xs="24" :sm="10" :lg="8">
-      <img src="@/assets/icon/blog.png" alt="RSS" @click="GO(data.blog)">
-      <el-popover placement="top-start" trigger="hover" :width="225">
+    <el-col :lg="8" :sm="10" :xs="24" class="copyright-icons">
+      <img alt="RSS" src="@/assets/icon/blog.png" @click="GO(data.blog)">
+      <el-popover :width="225" placement="top-start" trigger="hover">
         <template #reference>
-          <img src="@/assets/icon/wechat.png" alt="微信" @click="GO(data.mp_url)">
+          <img alt="微信" src="@/assets/icon/wechat.png" @click="GO(data.mp_url)">
         </template>
-        <img :src="data.mp_img" alt="微信公众号图片" @click="GO(data.mp_url)" style="width: 200px; height: auto;">
+        <img :src="data.mp_img" alt="微信公众号图片" style="width: 200px; height: auto;" @click="GO(data.mp_url)">
       </el-popover>
-      <img src="@/assets/icon/mail.png" alt="邮箱" @click="GO('mailto:'+data.mail)">
+      <img alt="邮箱" src="@/assets/icon/mail.png" @click="GO('mailto:'+data.mail)">
     </el-col>
     <!--        版权信息-->
     <el-col class="copyright-text">© 2022-2023 {{ data.copyright }} All Rights Reserved.</el-col>
     <el-col class="copyright-text hidden-xs-only">
-      <span @click="GO('https://beian.miit.gov.cn/#/Integrated/recordQuery')"
-            v-if="data.gov_no1.length !== 0">{{ data.gov_no1 }}</span>
+      <span v-if="data.gov_no1.length !== 0"
+            @click="GO('https://beian.miit.gov.cn/#/Integrated/recordQuery')">{{ data.gov_no1 }}</span>
       <span v-show="data.gov_no2.length !== 0 && data.gov_no1.length !== 0" style="padding: 0 10px">|</span>
-      <span @click="GO('https://www.beian.gov.cn/portal/registerSystemInfo')" v-if="data.gov_no2.length !== 0">
-        <img src="@/assets/icon/gongan.png" alt="公安部备案图表" style="padding-right: 10px"/>{{ data.gov_no2 }}
+      <span v-if="data.gov_no2.length !== 0" @click="GO('https://www.beian.gov.cn/portal/registerSystemInfo')">
+        <img alt="公安部备案图表" src="@/assets/icon/gongan.png" style="padding-right: 10px"/>{{ data.gov_no2 }}
       </span>
     </el-col>
     <el-col class="copyright-text hidden-sm-and-up">
-      <el-col @click="GO('https://beian.miit.gov.cn/#/Integrated/recordQuery')" v-if="data.gov_no1.length !== 0">
+      <el-col v-if="data.gov_no1.length !== 0" @click="GO('https://beian.miit.gov.cn/#/Integrated/recordQuery')">
         {{ data.gov_no1 }}
       </el-col>
-      <el-col @click="GO('https://www.beian.gov.cn/portal/registerSystemInfo')" v-if="data.gov_no2.length !== 0">
-        <img src="@/assets/icon/gongan.png" alt="公安部备案图表" style="padding-right: 10px"/>{{ data.gov_no2 }}
+      <el-col v-if="data.gov_no2.length !== 0" @click="GO('https://www.beian.gov.cn/portal/registerSystemInfo')">
+        <img alt="公安部备案图表" src="@/assets/icon/gongan.png" style="padding-right: 10px"/>{{ data.gov_no2 }}
       </el-col>
     </el-col>
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 // 获取页面信息
-import  {PublicInfo, PublicInfoRes} from "../../api/public";
+import {PublicInfo, PublicInfoRes} from "../../api/public";
 import {ElNotification} from "element-plus";
 
 // 内容

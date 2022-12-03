@@ -4,9 +4,10 @@
       <p class="MSGMain-content-title">热点动态</p>
       <el-carousel :interval="interval" height="185px">
         <!--START-->
-        <el-carousel-item class="MSGMain-content-item" @click="goUrl(item.jumpLink.url)" v-for="(item,index) in data" :key="index">
-          <h3 class="MSGMain-content-item-title">{{item.title}}</h3>
-          <p class="MSGMain-content-item-desc">{{item.desc}}</p>
+        <el-carousel-item v-for="(item,index) in data" :key="index" class="MSGMain-content-item"
+                          @click="goUrl(item.jumpLink.url)">
+          <h3 class="MSGMain-content-item-title">{{ item.title }}</h3>
+          <p class="MSGMain-content-item-desc">{{ item.desc }}</p>
           <div class="MSGMain-content-item-info">
             <p>{{ item.from }}</p>
             <p>{{ item.publicTime }}</p>
@@ -18,7 +19,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {HotMessage} from "../../../../api/panel";
 import useStore from "../../../../store";
 
@@ -32,7 +33,7 @@ const data = ref()
 const interval = 5000
 
 // 热点动态跳转
-function goUrl(url:string) {
+function goUrl(url: string) {
   window.open(url, '_blank')
 }
 
@@ -52,7 +53,7 @@ const GetHotMessage = async () => {
 GetHotMessage()
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .MSGMain {
   width: 900px;
   height: 230px;

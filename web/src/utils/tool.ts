@@ -21,7 +21,7 @@ export function timestamp(): number {
 }
 
 // 签名算法
-export function createSign(formDate:any) :string{
+export function createSign(formDate: any): string {
     // 去除空值
     for (let key in formDate) {
         if (formDate[key] == "") {
@@ -30,7 +30,7 @@ export function createSign(formDate:any) :string{
     }
     // 排序
     let formDate2 = Object.keys(formDate).sort();
-    let formDate3:any = {};
+    let formDate3: any = {};
     for (let i = 0; i < formDate2.length; i++) {
         formDate3[formDate2[i]] = formDate[formDate2[i]];
     }

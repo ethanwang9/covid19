@@ -1,16 +1,16 @@
 <template>
-  <el-row class="main" justify="center" align="middle">
-    <el-col :xs="22" :sm="12" :md="18" :lg="14" class="login">
-      <el-col class="login-left hidden-sm-and-down" :md="14">
-        <img src="@/assets/images/index/login/login-bg.png" alt="login_bg">
+  <el-row align="middle" class="main" justify="center">
+    <el-col :lg="14" :md="18" :sm="12" :xs="22" class="login">
+      <el-col :md="14" class="login-left hidden-sm-and-down">
+        <img alt="login_bg" src="@/assets/images/index/login/login-bg.png">
       </el-col>
-      <el-col class="login-right" :md="10">
+      <el-col :md="10" class="login-right">
         <el-col class="login-right-title">
           <h1>COVID-19 大数据可视化系统</h1>
           <p>可视化网络爬虫测绘网络空间疫情数据</p>
         </el-col>
-        <el-col class="login-right-qr" v-if="!isWx">
-          <qrcode-vue :value="qrInfo.content" :size="qrInfo.size" class="login-right-qr-content"></qrcode-vue>
+        <el-col v-if="!isWx" class="login-right-qr">
+          <qrcode-vue :size="qrInfo.size" :value="qrInfo.content" class="login-right-qr-content"></qrcode-vue>
           <p>微信扫码登录</p>
         </el-col>
         <el-col v-else style="margin-top: 50px;">
@@ -22,13 +22,11 @@
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {LoginStatus, LoginUrl} from "../../api/login";
 import QrcodeVue from 'qrcode.vue'
 import useStore from "../../store";
-import {useRoute, useRouter} from "vue-router";
-import axios from "axios/index";
-import request from "../../api";
+import {useRouter} from "vue-router";
 
 // 二维码信息
 const qrInfo = reactive({
@@ -46,10 +44,10 @@ const router = useRouter()
 
 // 获取请求链接
 async function getUrl() {
-  let back:string = ""
-  if(import.meta.env.DEV) {
+  let back: string = ""
+  if (import.meta.env.DEV) {
     back = import.meta.env.VITE_URL
-  }else {
+  } else {
     back = import.meta.env.VITE_SERVER_ADDR
   }
   await LoginUrl({

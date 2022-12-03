@@ -1,6 +1,6 @@
 <template>
   <el-row :gutter="15" justify="center">
-    <el-col :md="18" :lg="14" class="main" v-if="isAdmin">
+    <el-col v-if="isAdmin" :lg="14" :md="18" class="main">
       <el-col>
         <h3>公众号设置</h3>
       </el-col>
@@ -24,13 +24,13 @@
         </el-form>
       </el-col>
     </el-col>
-    <el-col :sm="8" class="error" v-else>
+    <el-col v-else :sm="8" class="error">
       <Auth></Auth>
     </el-col>
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {SysMpInfo, SysMpInfoRes, SysMpInfoSet} from "../../../api/sys";
 import {FormInstance, FormRules} from "element-plus";
 

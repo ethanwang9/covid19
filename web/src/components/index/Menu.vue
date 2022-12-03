@@ -1,22 +1,22 @@
 <template>
   <el-row class="menu">
-    <el-col class="menu-left hidden-sm-and-down" :md="10">
-      <img src="@/assets/icon/du.png" alt="logo">
+    <el-col :md="10" class="menu-left hidden-sm-and-down">
+      <img alt="logo" src="@/assets/icon/du.png">
       <h3>COVID-19 大数据可视化系统</h3>
     </el-col>
-    <el-col class="menu-right" :sm="24" :md="10">
-      <el-col class="menu-right-btns" :xs="16" :sm="10" :md="14">
-        <el-button text dark @click="goto('/')">首页</el-button>
-        <el-button text dark @click="goto('/publicity')">防疫宣传</el-button>
+    <el-col :md="10" :sm="24" class="menu-right">
+      <el-col :md="14" :sm="10" :xs="16" class="menu-right-btns">
+        <el-button dark text @click="goto('/')">首页</el-button>
+        <el-button dark text @click="goto('/publicity')">防疫宣传</el-button>
       </el-col>
-      <el-col class="menu-right-otns" :xs="6" :sm="10" :md="6">
+      <el-col :md="6" :sm="10" :xs="6" class="menu-right-otns">
         <el-button class="login" color="#ffffff" dark @click="goto('/login')">进入系统</el-button>
       </el-col>
     </el-col>
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useRouter} from "vue-router";
 
 const router = useRouter()

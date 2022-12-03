@@ -1,6 +1,6 @@
 <template>
-  <el-row class="main" :gutter="20" justify="center">
-    <el-col class="main-item-1" :span="6">
+  <el-row :gutter="20" class="main" justify="center">
+    <el-col :span="6" class="main-item-1">
       <el-row>
         <ExtantDiagnosis></ExtantDiagnosis>
       </el-row>
@@ -11,7 +11,7 @@
         <Cumulative></Cumulative>
       </el-row>
     </el-col>
-    <el-col class="main-item-2" :span="12">
+    <el-col :span="12" class="main-item-2">
       <el-col class="m-1">
         <Statistics></Statistics>
       </el-col>
@@ -22,7 +22,7 @@
         <HotMsg></HotMsg>
       </el-col>
     </el-col>
-    <el-col class="main-item-3" :span="6">
+    <el-col :span="6" class="main-item-3">
       <el-row class="r-1">
         <Outbreak></Outbreak>
       </el-row>
@@ -33,7 +33,7 @@
   </el-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import ExtantDiagnosis from "./content/extant_diagnosis.vue"
 import Added from "./content/added.vue"
 import Cumulative from "./content/cumulative.vue"
@@ -41,9 +41,7 @@ import Outbreak from "./content/outbreak.vue"
 import DangerousAreas from "./content/dangerous_areas.vue"
 import Statistics from "./content/statistics.vue"
 import Map from "./content/map.vue"
-import HotMsg from "./content/hot_msg.vue"
-
-</script>
+import HotMsg from "./content/hot_msg.vue"</script>
 
 <style lang="scss" scoped>
 .main {

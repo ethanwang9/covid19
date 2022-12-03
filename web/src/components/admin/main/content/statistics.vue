@@ -1,28 +1,28 @@
 <template>
   <div class="SMain">
     <div class="SMain-item">
-      <dv-border-box8 :dur="4" ref="border1">
+      <dv-border-box8 ref="border1" :dur="4">
         <h4 v-if="db.currentConfirmedCount>99999">999999+</h4>
         <h4 v-else>{{ db.currentConfirmedCount }}</h4>
         <p>现存确诊</p>
       </dv-border-box8>
     </div>
     <div class="SMain-item">
-      <dv-border-box8 :dur="6" ref="border2">
+      <dv-border-box8 ref="border2" :dur="6">
         <h4 v-if="db.confirmedCount>99999">{{ db.confirmedCount }}</h4>
         <h4 v-else>{{ db.confirmedCount }}</h4>
         <p>累计确诊</p>
       </dv-border-box8>
     </div>
     <div class="SMain-item">
-      <dv-border-box8 :dur="8" ref="border3">
+      <dv-border-box8 ref="border3" :dur="8">
         <h4 v-if="db.deadCount>99999">999999+</h4>
         <h4 v-else>{{ db.deadCount }}</h4>
         <p>累计死亡</p>
       </dv-border-box8>
     </div>
     <div class="SMain-item">
-      <dv-border-box8 :dur="10" ref="border4">
+      <dv-border-box8 ref="border4" :dur="10">
         <h4 v-if="db.curedCount>99999">999999+</h4>
         <h4 v-else>{{ db.curedCount }}</h4>
         <p>累计治愈</p>
@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import useStore from "../../../../store";
 import {AreaStat, AreaStatRes} from "../../../../api/panel";
 
@@ -65,7 +65,7 @@ const GetAreaStat = async () => {
 GetAreaStat()
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .SMain {
   display: flex;
   justify-content: space-between;

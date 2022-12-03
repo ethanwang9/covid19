@@ -6,21 +6,21 @@
 
       <!--防疫宣传内容-->
       <el-row class="content">
-        <el-col class="main" :md="16">
+        <el-col :md="16" class="main">
           <el-col class="main-title">
             <h1>防疫宣传</h1>
           </el-col>
           <el-col class="main-info">
             <h2 id="title1">新型冠状病毒感染的肺炎通用预防指南</h2>
-            <img src="@/assets/images/index/publicity/1.jpg" alt="防疫宣传">
+            <img alt="防疫宣传" src="@/assets/images/index/publicity/1.jpg">
           </el-col>
         </el-col>
-        <el-col class="side hidden-sm-and-down" :md="6">
+        <el-col :md="6" class="side hidden-sm-and-down">
           <el-col class="side-info">
             <!-- COVID-19 info-->
             <el-col class="side-info-ins">
               <el-col :span="10">
-                <img src="@/assets/icon/du.png" alt="COVID-19">
+                <img alt="COVID-19" src="@/assets/icon/du.png">
               </el-col>
               <el-col :span="14">
                 <h3>COVID-19</h3>
@@ -43,16 +43,15 @@
     </el-col>
   </el-row>
 
-<!--  返回顶部-->
+  <!--  返回顶部-->
   <el-backtop :bottom="100">
     <div class="TOTOP">UP</div>
   </el-backtop>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import Menu from '@/components/index/Menu.vue'
-import Footer from '@/components/index/Footer.vue'
-</script>
+import Footer from '@/components/index/Footer.vue'</script>
 
 <style lang="scss" scoped>
 .content {

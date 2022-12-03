@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {AreaStatDetails} from "../../../../api/panel";
 import useStore from "../../../../store";
 
@@ -45,7 +45,7 @@ const GetData = async () => {
 GetData()
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .YQMain {
   width: 450px;
   height: 365px;

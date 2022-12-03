@@ -1,9 +1,9 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <script lang="ts" setup>
-import {useDark, useToggle, usePreferredDark} from '@vueuse/core'
+import {useDark, useToggle} from '@vueuse/core'
 
 // 切换暗黑主题
 const isDark = useDark()

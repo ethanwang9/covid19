@@ -93,6 +93,8 @@ func WxToken(ctx *gin.Context) {
 		})
 		return
 	}
+	// 过滤用户IP
+	userIp := ctx.ClientIP()
 
 	// 获取用户信息
 	wxUserInfo := new(offia.ResultOAuthUser)
@@ -115,7 +117,7 @@ func WxToken(ctx *gin.Context) {
 	// 用户不存在
 	if !isFind {
 		// 获取IP归属地
-		ip, err := api.ApiApp.Internet.IP.New(internet.IP{Ip: ctx.GetHeader("X-Real-Ip")}).Query()
+		ip, err := api.ApiApp.Internet.IP.New(internet.IP{Ip: userIp}).Query()
 		if err != nil {
 			ctx.JSON(http.StatusOK, global.MsgBack{
 				Code:    global.CodeErrorByAPI,
@@ -191,7 +193,7 @@ func WxToken(ctx *gin.Context) {
 	}
 
 	// 获取用户IP属地
-	ip, err := api.ApiApp.Internet.IP.New(internet.IP{Ip: ctx.GetHeader("X-Real-Ip")}).Query()
+	ip, err := api.ApiApp.Internet.IP.New(internet.IP{Ip: userIp}).Query()
 	if err != nil {
 		ctx.JSON(http.StatusOK, global.MsgBack{
 			Code:    global.CodeErrorByAPI,

@@ -32,6 +32,19 @@ Docker-Compose: `2.12.2`
 
 ## 部署
 
+> 提示：
+>
+> 由于开发微信登录接口时使用微信公众号接口开发
+>
+> 所以后端微信配置中微信公众号必须是：`微信服务号` 或`有登录权限的接口`
+> 详情请看：[>>微信公众号登录接口文档<<](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
+
+测试该系统功能可以使用`微信公众号测试平台`
+
+[>>微信公众平台接口测试地址<<](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
+
+
+
 ### 前端
 
 > 请修改前端配置文件
@@ -211,10 +224,4 @@ docker system prune
 ```
 
 
-
-Alpine
-
-```
-sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-```
 

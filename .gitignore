@@ -1,4 +1,5 @@
 # 项目
+.idea/
 doc/
 
 # 前台
@@ -11,8 +12,6 @@ web/dist
 # 后台
 server/.idea
 server/config/config.ini
-server/config/config.ini.back
-server/log
 server/release
 server/log
 server/main_test.go

@@ -43,7 +43,7 @@ func (g *Geo) Get(province string) (Geo, error) {
 		SetHeaders(map[string]string{
 			"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56",
 		}).
-		Get("https://geo.datav.aliyun.com/areas_v3/bound/" + province + "_full.json")
+		Get("http://geo.datav.aliyun.com/areas_v3/bound/" + province + "_full.json")
 
 	if err != nil {
 		global.LOG.Error("接口#阿里-Geo地图请求失败", zap.Error(err))

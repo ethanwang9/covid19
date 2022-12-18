@@ -2,9 +2,15 @@
 
 >作者: **Ethan.Wang**
 >
->版本号: 1.0.0
+>版本号: **1.0.0**
 >
 >更新时间: **2022-12-03 21:33:10**
+
+
+
+## 在线案例
+
+https://welcome.covid19.ethan9.cn/
 
 
 
@@ -32,14 +38,16 @@ Docker-Compose: `2.12.2`
 
 ## 部署
 
-> 提示：
+> 提醒：
 >
-> 由于开发微信登录接口时使用微信公众号接口开发
+> 1. 使用前请编辑配置文件，不然系统无法运行
 >
-> 所以后端微信配置中微信公众号必须是：`微信服务号` 或`有登录权限的接口`
-> 详情请看：[>>微信公众号登录接口文档<<](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
+> 2. 由于开发微信登录接口时使用微信公众号接口开发
+>
+>    所以后端微信配置中微信公众号必须是：`微信服务号` 或`有登录权限的接口`
+>    详情请看：[>>微信公众号登录接口文档<<](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
 
-测试该系统功能可以使用`微信公众号测试平台`
+测试系统功能可以使用`微信公众号测试平台`
 
 [>>微信公众平台接口测试地址<<](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
 
@@ -223,5 +231,61 @@ docker-compose -f deploy/docker-compose.yaml up --build -d
 docker system prune
 ```
 
+### 宝塔反向代理
 
+```nginx
+
+#PROXY-START/
+
+location ^~ /
+{
+    proxy_pass http://127.0.0.1:10001;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE-HOST $remote_addr;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_http_version 1.1;
+    # proxy_hide_header Upgrade;
+
+    add_header X-Cache $upstream_cache_status;
+    #Set Nginx Cache
+    
+    try_files $uri $uri/ /index.html;
+
+    set $static_fileFI0VdFz8 0;
+    if ( $uri ~* "\.(gif|png|jpg|css|js|woff|woff2)$" )
+    {
+        set $static_fileFI0VdFz8 1;
+        expires 1m;
+    }
+    if ( $static_fileFI0VdFz8 = 0 )
+    {
+        add_header Cache-Control no-cache;
+    }
+}
+#PROXY-END/
+```
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca0c752 (README中添加宝塔面板反向代理配置)
+## 日志目录
+
+> 如果出现无法解决的问题，请查看日志目录
+
+**前端Nginx日志目录：**
+
+```bash
+~/docker/covid19/web/log
+```
+
+**后端日志目录：**
+
+```bash
+~/docker/covid19/server/log
+```
 

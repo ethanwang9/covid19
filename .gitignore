@@ -1,0 +1,18 @@
+# 项目
+.idea/
+doc/
+
+# 前台
+web/.idea
+web/.vscode
+web/node_modules
+web/dist
+
+
+# 后台
+server/.idea
+server/config/config.ini
+server/release
+server/log
+server/main_test.go
+

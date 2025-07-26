@@ -1,0 +1,52 @@
+// 导入黑暗模式样式
+@use 'element-plus/theme-chalk/dark/css-vars.css';
+// 导入 element plus 自定义样式
+@use "element/index.scss";
+
+
+// 公共样式
+$app-bg-color: linear-gradient(158deg, #01034D 0%, #001372 100%);
+
+body {
+  background: $app-bg-color;
+}
+
+//go to top
+.TOTOP {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  color: #010653;
+}
+
+// 滚动条样式
+@media screen and (min-width: 768px) {
+  /* 整个滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* 滚动条上的滚动滑块 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #1972a4;
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.4) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.4) 75%,
+            transparent 75%,
+            transparent);
+    border-radius: 32px;
+  }
+
+  /* 滚动条轨道 */
+  ::-webkit-scrollbar-track {
+    background-color: #424242;
+    border-radius: 32px;
+  }
+}

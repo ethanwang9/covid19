@@ -1,0 +1,83 @@
+version: "3.8"
+
+services:
+  web:
+    image: c19-web:1.0.0
+    build:
+      context: ../web
+      dockerfile: ./Dockerfile
+    container_name: c19_web
+    restart: always
+    ports:
+      - "10001:8080"
+    depends_on:
+      - server
+    command: [ 'nginx-debug', '-g', 'daemon off;' ]
+    volumes:
+      - ~/docker/covid19/web/log:/wwwlogs/
+    networks:
+      network:
+        ipv4_address: 172.19.19.11
+
+  server:
+    image: c19-server:1.0.0
+    build:
+      context: ../server
+      dockerfile: ./Dockerfile
+    container_name: c19_server
+    restart: always
+    ports:
+      - "10002:8088"
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ~/docker/covid19/server/log:/app/log
+    networks:
+      network:
+        ipv4_address: 172.19.19.12
+
+  mysql:
+    image: mysql:5.7
+    container_name: c19_mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    ports:
+      - "10003:3306"
+    environment:
+      # 初始化启动时要创建的数据库的名称
+      MYSQL_DATABASE: 'c19'
+      # root 管理员用户密码
+      MYSQL_ROOT_PASSWORD: 'pRd6KL7RnA29JA8'
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      network:
+        ipv4_address: 172.19.19.13
+
+  redis:
+    image: redis:6.2.6
+    container_name: c19_redis
+    restart: always
+    ports:
+      - "10004:6379"
+    volumes:
+      - redis:/data
+    command:
+      # 设置 redis密码
+      --requirepass "7DCsx0EWNFTRI60"
+    networks:
+      network:
+        ipv4_address: 172.19.19.14
+
+# 子网掩码: 172.19.19.1
+networks:
+  network:
+    ipam:
+      driver: default
+      config:
+        - subnet: '172.19.19.0/24'
+
+volumes:
+  mysql:
+  redis:

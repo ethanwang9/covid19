@@ -12,7 +12,13 @@
 
 https://welcome.covid19.ethan9.cn/
 
+## 图片展示
 
+![图片](./doc/1.png)
+![图片](./doc/2.png)
+![图片](./doc/3.png)
+![图片](./doc/4.png)
+![图片](./doc/5.png)
 
 ## 运行环境
 
